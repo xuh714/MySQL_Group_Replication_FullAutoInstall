@@ -328,6 +328,8 @@ function mgr_online_rollback() {
             mysql -h127.0.0.1 -uroot -p${arrpasswd[0]} -P${arrport[i]} >/dev/null 2>&1 <<EOF
 stop group_replication;
 select sleep(3);
+reset master;
+reset slave all;
 SET GLOBAL SUPER_READ_ONLY=OFF;
 set SQL_LOG_BIN=0;
 DROP USER IF EXISTS rpl_user@'%';
@@ -340,6 +342,8 @@ EOF
             mysql -h127.0.0.1 -uroot -p${arrpasswd[i]} -P${arrport[i]} >/dev/null 2>&1 <<EOF
 stop group_replication;
 select sleep(3);
+reset master;
+reset slave all;
 SET GLOBAL SUPER_READ_ONLY=OFF;
 set SQL_LOG_BIN=0;
 DROP USER IF EXISTS rpl_user@'%';
