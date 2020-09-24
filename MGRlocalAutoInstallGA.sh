@@ -178,13 +178,13 @@ function multi_insts_stop() {
     if [ ${#arrpasswd[@]} -eq 1 ];then
         for socket in ${arrsocket[@]}
         do
-            mysqladmin -uroot -p${arrpasswd[0]} -S$socket shutdown 2>/dev/null
+            mysqladmin -uroot -p${arrpasswd[0]} -S$socket shutdown >/dev/null 2>&1
             sleep 5
         done
     else
         for i in $(seq 0 `expr ${#arrsocket[@]} - 1`)
         do
-            mysqladmin -uroot -p${arrpasswd[i]} -S${arrsocket[i]} shutdown 2>/dev/null
+            mysqladmin -uroot -p${arrpasswd[i]} -S${arrsocket[i]} shutdown >/dev/null 2>&1
             sleep 5
         done
     fi
@@ -194,13 +194,13 @@ function multi_insts_start() {
     if [ ${#arroptfile[@]} -eq 1 ];then
         for suffix in ${arrsuffix[@]}
         do
-            mysqld --defaults-file=${arroptfile[0]} --defaults-group-suffix=$suffix --daemonize --user=mysql 2>/dev/null
+            mysqld --defaults-file=${arroptfile[0]} --defaults-group-suffix=$suffix --daemonize --user=mysql >/dev/null 2>&1
             sleep 5
         done
     else
         for optfile in ${arroptfile[@]}
         do
-            mysqld --defaults-file=$optfile --daemonize --user=mysql 2>/dev/null
+            mysqld --defaults-file=$optfile --daemonize --user=mysql >/dev/null 2>&1
             sleep 5
         done
     fi
