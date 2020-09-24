@@ -127,12 +127,16 @@ function optionfile_config() {
             for option in ${arroption[@]}
             do
                 sed -e "/${option%%=*}/ s/^#*/#/" -i ${arroptfile[i]}
-                if [ "${option%=*}" = "server_id" ];then
-                    option="server_id=$j"
-                elif [ "${option%=*}" = "group_replication_local_address" ];then
-                    option="group_replication_local_address=\"127.0.0.1:2490$j\""
+            done
+            rownum=`cat -n ${arroptfile[i]}|grep -w "\[mysqld\]"|awk '{print $1}'`
+            for k in $(seq `expr ${#arroption[@]} - 1` -1 0)
+            do
+                if [ "${arroption[k]%=*}" = "server_id" ];then
+                    arroption[k]="server_id=$j"
+                elif [ "${arroption[k]%=*}" = "group_replication_local_address" ];then
+                    arroption[k]="group_replication_local_address=\"127.0.0.1:2490$j\""
                 fi
-                echo $option >> ${arroptfile[i]}
+                sed -i "$rownum a ${arroption[k]}" ${arroptfile[i]}
             done
         done
     else
