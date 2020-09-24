@@ -69,7 +69,7 @@ function precheck() {
 test -e ${arroptfile[0]} && echo "presence" || echo "absence"
 EOF
 )
-        if [ "$stdopt" != "presence"  ];then
+        if [ -z $stdopt ] || [ "$stdopt" != "presence"  ];then
             echo "$(cdate) [ERROR] There is a problem in args of option file, please check again."
             exit 1
         fi
@@ -77,7 +77,7 @@ EOF
 mysql -h127.0.0.1 -uroot -p${arrdbpasswd[0]} -P${arrport[0]} -e"select 1;" 2>/dev/null|awk 'NR>1'
 EOF
 )
-        if [ $stdopt -ne 1 ];then
+        if [ -z $stdopt ] || [ $stdopt -ne 1 ];then
         echo "$(cdate) [ERROR] There is a problem in args of dbpassword or dbport, please check again."
         exit 1
         fi
@@ -89,7 +89,7 @@ EOF
 test -e ${arroptfile[i]} && echo "presence" || echo "absence"
 EOF
 )
-        if [ "$stdopt" != "presence" ];then
+        if [ -z $stdopt ] || [ "$stdopt" != "presence" ];then
             echo "$(cdate) [ERROR] There is a problem in args of option file, please check again."
             exit 1
         fi
@@ -97,7 +97,7 @@ EOF
 mysql -h127.0.0.1 -uroot -p${arrdbpasswd[i]} -P${arrport[i]} -e"select 1;" 2>/dev/null|awk 'NR>1'
 EOF
 )
-        if [ $stdopt -ne 1 ];then
+        if [ -z $stdopt ] || [ $stdopt -ne 1 ];then
         echo "$(cdate) [ERROR] There is a problem in args of dbpassword or dbport, please check again."
         exit 1
         fi
