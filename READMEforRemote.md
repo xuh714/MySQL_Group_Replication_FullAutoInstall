@@ -11,13 +11,11 @@ Full-automatic deployment of Remote MGR is realized
 
  1.上传脚本，并赋予脚本执行权限
 
- 2.启动起码三台新的数据库实例，并开启bin-log参数
+ 2.建议提供(2N+1)个数据库实例，必须分别开启log-bin特性
 
- 3.配置环境变量
+ 3.配置并生效mysql客户端环境变量
 
- 4.若使用公司自动化脚本创建的MySQL，需要修改my.cnf，取消log_error参数注释，去除多余不必要参数
-
- 5.安装sshpass
+ 4.安装sshpass
 
 ```
 yum install -y epel-release
@@ -25,7 +23,7 @@ yum repolist
 yum install -y sshpass
 ```
 
- 6.使用sshpass连接要部署的异机
+ 5.使用sshpass连接要部署的异机
 
 ```
 ssh root@192.168.106.128
@@ -43,7 +41,7 @@ sshpass -phzmcdba ssh root@192.168.106.131
 
  检测完成，所有异机都能成功连接
 
- 7.配置域名解析
+ 6.配置域名解析
 
 ```
 vi /etc/hosts
