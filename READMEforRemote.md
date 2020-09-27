@@ -18,25 +18,25 @@ Full-automatic deployment of Remote MGR is realized
  4.安装sshpass
 
 ```
-yum install -y epel-release
-yum repolist
-yum install -y sshpass
+shell> yum install -y epel-release
+shell> yum repolist
+shell> yum install -y sshpass
 ```
 
  5.使用sshpass连接要部署的异机
 
 ```
-ssh root@192.168.106.128
-ssh root@192.168.106.130
-ssh root@192.168.106.131
+shell> ssh root@192.168.106.128
+shell> ssh root@192.168.106.130
+shell> ssh root@192.168.106.131
 ```
 
  保证能够成功连接到所有你要部署的异机
 
 ```
-sshpass -phzmcdba ssh root@192.168.106.128
-sshpass -phzmcdba ssh root@192.168.106.130
-sshpass -phzmcdba ssh root@192.168.106.131
+shell> sshpass -phzmcdba ssh root@192.168.106.128
+shell> sshpass -phzmcdba ssh root@192.168.106.130
+shell> sshpass -phzmcdba ssh root@192.168.106.131
 ```
 
  检测完成，所有异机都能成功连接
@@ -44,7 +44,7 @@ sshpass -phzmcdba ssh root@192.168.106.131
  6.配置域名解析
 
 ```
-vi /etc/hosts
+shell> vi /etc/hosts
 192.168.106.128 mysql
 192.168.106.130 mysql2
 192.168.106.131 mysql3
@@ -71,13 +71,13 @@ vi /etc/hosts
  1.密码，选项文件，主机root账户密码，端口号都相同
 
 ```
-./MGRremoteAutoInstallGA.sh -dAbcd321# -f/etc/my.cnf -i192.168.239.57,192.168.239.58,192.168.239.59 -ohzmcdba -P3306 -tmcbak
+shell> ./MGRremoteAutoInstallGA.sh -dAbcd321# -f/etc/my.cnf -i192.168.239.57,192.168.239.58,192.168.239.59 -ohzmcdba -P3306 -tmcbak
 ```
 
  2.密码，选项文件，主机root账户密码，端口号其中一个不同
 
 ```
-./MGRremoteAutoInstallGA.sh -dAbcd321#,Abcd321#,Abcd321# -f/etc/my.cnf,/etc/my.cnf,/etc/my.cnf -i192.168.239.57,192.168.239.58,192.168.239.59 -ohzmcdba,hzmcdba,hzmcdba -P3306,3306,3306 -tmcbak
+shell> ./MGRremoteAutoInstallGA.sh -dAbcd321#,Abcd321#,Abcd321# -f/etc/my.cnf,/etc/my.cnf,/etc/my.cnf -i192.168.239.57,192.168.239.58,192.168.239.59 -ohzmcdba,hzmcdba,hzmcdba -P3306,3306,3306 -tmcbak
 ```
 
 ### 脚本运行后参数(不区分大小写)
