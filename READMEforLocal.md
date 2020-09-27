@@ -11,7 +11,7 @@ Full-automatic deployment of Local MGR is realized
 
  1.上传脚本，并赋予脚本执行权限
 
- 2.建议提供3个数据库实例，必须分别开启log-bin特性
+ 2.建议提供(2N+1)个数据库实例，必须分别开启log-bin特性
 
  3.配置并生效mysql客户端环境变量
 
@@ -31,13 +31,13 @@ Full-automatic deployment of Local MGR is realized
  1.使用单个配置文件来实现多实例，密码相同
 
 ```
-./MGRlocalAutoInstallGA.sh -f/etc/my.cnf -pAbcd321# -P33071,33072,33073 -s571,572,573 -tmcbak
+shell> ./MGRlocalAutoInstallGA.sh -f/etc/my.cnf -pAbcd321# -P33071,33072,33073 -s571,572,573 -tmcbak
 ```
 
  2.使用多个配置文件，密码不同
 
 ```
-./MGRlocalAutoInstallGA.sh -f/etc/my33071.cnf,/etc/my33072.cnf,/etc/my33073.cnf -pAbcd321#,Abcd321#,Abcd321# -P33071,33072,33073 -tmcbak
+shell> ./MGRlocalAutoInstallGA.sh -f/etc/my33071.cnf,/etc/my33072.cnf,/etc/my33073.cnf -pAbcd321#,Abcd321#,Abcd321# -P33071,33072,33073 -tmcbak
 ```
 
 ### 脚本运行后参数(不区分大小写)
