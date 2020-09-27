@@ -169,20 +169,24 @@ cp ${arroptfile[0]} ${arroptfile[0]}.$baktag
 for option in ${arroption[@]}
 do
     sed -e "/\${option%%=*}/ s/^#*/#/" -i ${arroptfile[0]}
-    if [ "\${option%=*}" = "server_id" ];then
-        option="server_id=$j"
-    elif [ "\${option%=*}" = "disabled_storage_engines" ];then
+done
+rownum=`cat -n ${arroptfile[0]}|grep -w "\[mysqld${arrsuffix[i]}\]"|awk '{print $1}'`
+for k in $(seq `expr ${#arroption[@]} - 1` -1 0)
+do
+    if [ "\${arroption[k]%=*}" = "server_id" ];then
+        arroption[k]="server_id=$j"
+    elif [ "\${arroption[k]%=*}" = "disabled_storage_engines" ];then
         option="disabled_storage_engines=\"MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY\""
-    elif [ "\${option%=*}" = "plugin_load_add" ];then
-        option="plugin_load_add='group_replication.so'"
-    elif [ "\${option%=*}" = "group_replication_group_name" ];then
-        option="group_replication_group_name=\"b8e60503-b210-11ea-88f2-525400458c57\""
-    elif [ "\${option%=*}" = "group_replication_local_address" ];then
-        option="group_replication_local_address=\"${arripaddr[i]}:33061\""
-    elif [ "\${option%=*}" = "group_replication_group_seeds" ];then
-        option="group_replication_group_seeds=\"${group_seeds#*,}\""
+    elif [ "\${arroption[k]%=*}" = "plugin_load_add" ];then
+        arroption[k]="plugin_load_add='group_replication.so'"
+    elif [ "\${arroption[k]%=*}" = "group_replication_group_name" ];then
+        arroption[k]="group_replication_group_name=\"b8e60503-b210-11ea-88f2-525400458c57\""
+    elif [ "\${arroption[k]%=*}" = "group_replication_local_address" ];then
+        arroption[k]="group_replication_local_address=\"${arripaddr[i]}:33061\""
+    elif [ "\${arroption[k]%=*}" = "group_replication_group_seeds" ];then
+        arroption[k]="group_replication_group_seeds=\"${group_seeds#*,}\""
     fi
-    echo \$option >> ${arroptfile[0]}
+    sed -i "\$rownum a \${arroption[k]}" ${arroptfile[0]}
 done
 EOF
         done
