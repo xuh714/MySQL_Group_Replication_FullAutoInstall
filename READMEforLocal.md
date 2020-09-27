@@ -1,5 +1,5 @@
 # MySQL_Group_Replication_FullAutoInstall
-Full-automatic deployment of MGR is realized
+Full-automatic deployment of Local MGR is realized
 ## 支持的操作系统和数据库版本
 
 操作系统：LINUX 6/7
