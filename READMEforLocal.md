@@ -11,7 +11,7 @@ Full-automatic deployment of Local MGR is realized
 
  1.上传脚本，并赋予脚本执行权限
 
- 2.建议提供(2N+1)个数据库实例，必须分别开启log-bin特性
+ 2.建议提供(2N+1)且不超过9个数据库实例，必须分别开启log-bin特性
 
  3.配置并生效mysql客户端环境变量
 
@@ -57,7 +57,7 @@ Welcome to Local install, deinstall, precheck, test, or switch multi primarys, p
 | 选择 | 注释                  | 功能                                                         |
 | ---- | --------------------- | ------------------------------------------------------------ |
 | I    | install               | 自动部署MGR。                                                |
-| D    | deinstall             | 自动卸载MGR/回滚。部署失败后也要先回滚来恢复。               |
-| P    | precheck              | 预检查。部署前先预检查一遍是否成功。                         |
-| T    | test                  | 测试数据库实例的MGR状态。可在部署或回滚后测试状态判断是否成功。 |
-| S    | switch multi primarys | 切换多主模式.                                                |
+| D    | deinstall             | 自动卸载MGR。如果首次部署失败，必须先卸载再重新部署。               |
+| P    | precheck              | 预检查。部署之前先执行预检并确保通过。                         |
+| T    | test                  | 检查MGR组复制各成员状态。 |
+| S    | switch multi primarys | 将单主模式切换为多主                                                |
