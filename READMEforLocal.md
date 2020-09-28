@@ -19,12 +19,12 @@ Full-automatic deployment of Local MGR is realized
 
 | 参数    | 注释       | 说明                                                         |
 | ------- | ---------- | ------------------------------------------------------------ |
-| f       | 配置文件   | 指定MySQL选项文件。若指定多个，请用逗号隔开。 |
-| p       | 密码       | 指定MySQL数据库系统账户密码。若指定多个，请用逗号隔开。 |
-| P       | 端口号     | 必须指定MGR所有MySQL实例端口，用逗号隔开。                   |
-| s       | 选项后缀   | 若使用-f指定单个选项文件，则必须使用-s选项指定MGR中不同MySQL实例后缀。 |
-| t       | 备份后缀名 | 指定MySQL选项文件备份标签。                                                 |
-| McDeBuG | 调试模式   | 用于脚本debug。                                                             |
+| f       | option file   | 指定MySQL选项文件。若指定多个，请用逗号隔开。 |
+| p       | db password       | 指定MySQL数据库系统账户密码。若指定多个，请用逗号隔开。 |
+| P       | db port     | 必须指定MGR所有MySQL实例端口，用逗号隔开。                   |
+| s       | mysql suffix   | 若使用-f指定单个选项文件，则必须使用-s选项指定MGR中不同MySQL实例后缀。 |
+| t       | tag | 指定MySQL选项文件备份标签。                                                 |
+| McDeBuG | debug   | 用于脚本debug。                                                             |
 
 ### 脚本使用demo
 
