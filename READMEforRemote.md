@@ -56,8 +56,8 @@ shell> vi /etc/hosts
 
 | 参数    | 注释             | 说明                                         |
 | ------- | ---------------- | -------------------------------------------- |
-| d       | db password             | 指定MySQL选项文件。若指定多个，请用逗号隔开。     |
-| f       | option file         | 指定MySQL数据库系统账户密码。若指定多个，请用逗号隔开。 |
+| d       | db password             | 指定MySQL数据库系统账户密码。若指定多个，请用逗号隔开。     |
+| f       | option file         | 指定MySQL选项文件。若指定多个，请用逗号隔开。 |
 | i       | ipaddress     | 必须指定MGR所有MySQL主机IP地址，用逗号隔开。         |
 | o       | os password | 指定MySQL主机系统账户密码，若指定多个，请用逗号隔开。 |
 | P       | db port           | 指定MySQL实例端口，若指定多个，请用逗号隔开。   |
